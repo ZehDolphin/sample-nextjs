@@ -1,5 +1,5 @@
 import { inter } from "@/pages";
-import { fetchWithDelay, useTime } from "@/utils/utils";
+import { useTime } from "@/utils/utils";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 
@@ -7,11 +7,15 @@ export default function CSRPage() {
 	const rendered = useTime();
 
 	const [todos, setTodos] = useState([]);
+	const [generated, setGenerated] = useState("");
 
 	useEffect(() => {
-		fetchWithDelay("https://jsonplaceholder.typicode.com/todos")
+		fetch("/api/todos")
 			.then((res) => res.json())
-			.then((data) => setTodos(data));
+			.then((data) => {
+				setTodos(data.todos);
+				setGenerated(data.generated);
+			});
 	}, []);
 
 	return (
@@ -27,9 +31,9 @@ export default function CSRPage() {
 				<pre>
 					{JSON.stringify(
 						{
-							generated: rendered,
+							generated: generated,
 							rendered: rendered,
-							age_seconds: rendered != "" ? (new Date(rendered).getTime() - new Date(rendered).getTime()) / 1000 : "",
+							age_seconds: rendered != "" ? (new Date(rendered).getTime() - new Date(generated).getTime()) / 1000 : "",
 							num_todos: todos.length,
 							todos: todos,
 						},
