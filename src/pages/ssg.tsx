@@ -24,7 +24,6 @@ export default function SSGPage({ data, time }: any) {
 				<title>SSG - Sample Next App</title>
 				<meta name="description" content="Created by ZehDolphin" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={inter.className}>
 				<h1>Static Site Generation</h1>

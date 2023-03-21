@@ -20,7 +20,6 @@ export default function CSRPage() {
 				<title>CSR - Sample Next App</title>
 				<meta name="description" content="Created by ZehDolphin" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={inter.className}>
 				<h1>Client Side Render</h1>
