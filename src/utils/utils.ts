@@ -7,3 +7,11 @@ export function useTime() {
 	}, []);
 	return time;
 }
+
+export function wait(ms: number) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function fetchWithDelay(url: string, delay: number = 500) {
+	return wait(delay).then(() => fetch(url));
+}

@@ -1,19 +1,7 @@
 import { inter } from "@/pages";
-import { useTime } from "@/utils/utils";
+import { fetchWithDelay, useTime } from "@/utils/utils";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-
-export async function getServerSideProps() {
-	const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-	const data = await res.json();
-
-	return {
-		props: {
-			data,
-			time: new Date().toJSON(),
-		},
-	};
-}
 
 export default function CSRPage() {
 	const rendered = useTime();
@@ -21,7 +9,7 @@ export default function CSRPage() {
 	const [todos, setTodos] = useState([]);
 
 	useEffect(() => {
-		fetch("https://jsonplaceholder.typicode.com/todos")
+		fetchWithDelay("https://jsonplaceholder.typicode.com/todos")
 			.then((res) => res.json())
 			.then((data) => setTodos(data));
 	}, []);

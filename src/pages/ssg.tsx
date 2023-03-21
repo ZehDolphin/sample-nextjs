@@ -1,10 +1,10 @@
 import { inter } from "@/pages";
-import { useTime } from "@/utils/utils";
+import { fetchWithDelay, useTime } from "@/utils/utils";
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 
 export async function getStaticProps() {
-	const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+	const res = await fetchWithDelay("https://jsonplaceholder.typicode.com/todos");
 	const data = await res.json();
 
 	return {

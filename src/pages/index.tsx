@@ -15,7 +15,10 @@ export default function Home() {
 			</Head>
 			<main className={inter.className}>
 				<h1>Sample NextJS App</h1>
-				<p>This project is used for various benchmarking tests on new server configurations.</p>
+				<p>
+					This project is used for various benchmarking tests on new server configurations. All example fetches inside the project if not stated otherwise will use a
+					500ms delay to simulate a longer request.
+				</p>
 			</main>
 		</>
 	);
